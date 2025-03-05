@@ -35,13 +35,14 @@ public class LoginServlet extends HttpServlet {
 
         if (helper.validatePassword(password) == true) {
 
-            String query = "select * from tbluser where username='" + username + "' and password = '" + password + "'";
+            String query = "select * from tbluser where username= ? and password = ? ";
             Connection conn = null;
-            Statement stmt = null;
+            PreparedStatement pstmt = null;
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
             try {
                 conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/user", db_user, db_pwd);
-                stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+                ResultSet rs = pstmt.executeQuery(query);
                 if (rs.next()) {
                     success = true;
                 }
