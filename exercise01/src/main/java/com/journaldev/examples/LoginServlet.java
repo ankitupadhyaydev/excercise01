@@ -20,8 +20,8 @@ public class LoginServlet extends HttpServlet {
 
     Helper helper = new Helper();
 
-    String db_user = "root";
-    String db_pwd = "Cx123!";
+    String db_user = "";
+    String db_pwd = "";
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
